@@ -1,0 +1,108 @@
+<form
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    #contatoForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    id="form_filme"    
+  >
+  
+    <div layout="row" layout-align="center center" style="margin: 5px">
+      <button class="mat-raised-button" id="voltar" type="button" mat-button routerLink="/contato" >Voltar</button>
+    </div>
+    <div align="center"  layout="row" layout-align="center center" > 
+      <mat-card
+        class="info-card mat-elevation-z8"       
+        style="margin-top: 40px; max-width: 800px; background-color: aliceblue;"
+        style="background-color: aliceblue;"
+      >
+        <mat-card-title> Filme </mat-card-title>
+        <mat-card-subtitle> Cadastro</mat-card-subtitle>
+
+        <mat-tab-group mat-align-tabs="left">
+          <mat-tab label="Dados Filme">
+            <mat-card-content fxLayout="column" fxLayoutAlign="left">
+              
+                <div fxFlex="100" fxLayoutAlign="left" *ngIf="false">
+                  <h4>Dados Filme:</h4>
+                </div>
+                <div
+                  fxFlex="50"
+                  fxLayout="row"
+                  fxLayoutAlign="space-between  left"
+                >
+                  <mat-form-field >
+                    
+                    <input
+                      id="codigo"
+                      name="codigo"
+                      autocomplete="off"
+                      required
+                      disabled
+                      matInput
+                      type="text"
+                      class="form-control"
+                      value=""
+                      placeholder="Código"
+                      [(ngModel)]="filme.id"
+                      #codigoField="ngModel"
+                    />
+                  </mat-form-field>
+                </div>
+                
+                  <mat-form-field >
+                    <mat-label>Titulo</mat-label>
+                    <input
+                      id="title"
+                      name="title"
+                      autocomplete="off"
+                      required
+                      minlength="3"
+                      maxlength="100"
+                      matInput
+                      type="text"
+                      class="form-control"
+                      value=""
+                      placeholder="Titulo"
+                      [(ngModel)]="filme.title"
+                      #nomeField="ngModel"
+                    />
+                    <mat-error *ngIf="nomeField.invalid">
+                      <p>Campo Título é obrigatório</p>
+                    </mat-error>
+                  </mat-form-field>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  
+                  
+                  <p></p>
+                  <p></p>               
+                 
+
+                  <p></p>
+                  <p></p>
+            </mat-card-content>
+          </mat-tab>          
+
+        </mat-tab-group>
+        <button
+          id="btn_salvar"
+          class="btn-salvar"
+          mat-button
+          color="primary"
+          type="submit"
+          [disabled]="!contatoForm.valid"
+        >
+          <!--<mat-icon>done</mat-icon>-->{{ lblBtnSalvar }}
+        </button>
+
+        <mat-hint *ngIf="submitted">
+          <div class="alert alert-success" role="alert">
+            Filme Salvo com Sucesso.
+          </div>
+        </mat-hint>
+      </mat-card>    
+  </div>
+</form>
+
+
